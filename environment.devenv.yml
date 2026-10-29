@@ -1,0 +1,34 @@
+# conda environment for tiffslide development
+# -------------------------------------------
+#
+# If you just want to install tiffslide you can do so via:
+#   >>> conda install -c conda-forge tiffslide
+#
+# conda-devenv:
+#   {% set TIFFSLIDE_DEVEL = os.environ.get('TIFFSLIDE_DEVEL', False) %}
+#
+name: tiffslide
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python>=3.12
+  - pip
+
+  # deps
+  - fsspec>=2024.10.0
+  - imagecodecs
+  - pillow>=9.1.0
+  - tifffile>=2026.5.2
+  - zarr>=3.2,<4.0
+
+  # development dependencies
+  - pre-commit        # [ TIFFSLIDE_DEVEL ]
+  - black             # [ TIFFSLIDE_DEVEL ]
+  - mypy              # [ TIFFSLIDE_DEVEL ]
+  - pytest>=6         # [ TIFFSLIDE_DEVEL ]
+  - pytest-cov        # [ TIFFSLIDE_DEVEL ]
+  - pytest-benchmark  # [ TIFFSLIDE_DEVEL ]
+  - pip:              # [ TIFFSLIDE_DEVEL ]
+    - "-e ."          # [ TIFFSLIDE_DEVEL ]
